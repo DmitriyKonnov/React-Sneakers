@@ -11,6 +11,9 @@ function App() {
           <ContentHeader />
           <div className="cardBlock">
             <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
           </div>
         </div>
       </div>
