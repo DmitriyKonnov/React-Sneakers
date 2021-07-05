@@ -29,6 +29,8 @@ ul {
   background-color: #ffffff;
 
   border-radius: 20px 20px 0 0;
+
+  padding-bottom: 40px;
 }
 
 .container {
@@ -135,5 +137,58 @@ ul {
         line-height: 17px;
       }
     }
+  }
+}
+
+.card {
+  box-sizing: border-box;
+  position: relative;
+
+  height: 270px;
+  width: 210px;
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  padding: 30px;
+
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-10px);
+  }
+  .cardFavorite {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+
+    &:hover > img {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    img {
+      position: relative;
+      border-radius: 5px;
+      top: -3px;
+      right: 8px;
+      cursor: pointer;
+    }
+  }
+  .cardImg {
+    width: 130px;
+    height: 110px;
+  }
+
+  .cardTitle {
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+    color: #000000;
+  }
+
+  .cardFooter {
+    display: flex;
   }
 }
