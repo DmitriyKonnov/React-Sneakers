@@ -250,3 +250,27 @@ ul {
     }
   }
 }
+
+.cart {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 10000;
+
+  .cartBg {
+    flex: 1;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+  }
+
+  .cartBlock {
+    width: 385px;
+    background-color: white;
+    z-index: 100001;
+  }
+}

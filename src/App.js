@@ -1,10 +1,12 @@
 import Header from './components/Header'
 import ContentHeader from './components/ContentHeader'
 import Card from './components/Card'
+import Cart from './components/Cart'
 
 function App() {
   return (
     <div className="wrapper">
+      <Cart/>
       <Header />
       <div className="content">
         <div className="container">
