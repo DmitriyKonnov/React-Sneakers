@@ -23,22 +23,30 @@ function Cart () {
                             <div className="cartItemImg">
                                 <img src="../img/sneakers-2.jpg" alt="" />
                             </div>
-                            <div className="cartItemContent"></div>
-                            <div className="cartItemButton"></div>
+                            <div className="cartItemContent">
+                                <p className="cartItemName">Мужские Кроссовки Nike Air Max 270</p>
+                                <p className="cartItemPrice">12 999 руб.</p>
+                            </div>
+                            <div className="cartItemButton">
+                                <img src="../img/remove.svg" alt="Добавить" />
+                            </div>
                         </div>
                     </div>
                     <div className="cartFooter">
                         <div className="cartSum">
-                            <span></span>
-                            <div></div>
-                            <span></span>
+                            <span className = "cartFooterName">Итого: </span>
+                            <div className = "cartFooterDash"></div>
+                            <span className = "cartFooterPrice">21 498 руб. </span>
                         </div>
                         <div className="cartSum">
-                        <span></span>
-                            <div></div>
-                            <span></span>
+                            <span className = "cartFooterName">Налог 5%: </span>
+                            <div className = "cartFooterDash"></div>
+                            <span className = "cartFooterPrice">1074 руб. </span>
                         </div>
-                        <button></button>
+                        <button className = "cartFooterBtn">
+                            <span>Оформить заказ</span>
+                            <img src="../img/arrow-btn.svg" alt="" />
+                        </button>
                     </div>
                 </div>
             </div>    

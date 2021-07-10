@@ -346,4 +346,59 @@ ul {
       }
     }
   }
+
+  .cartFooter {
+    .cartSum {
+      display: flex;
+      margin-bottom: 20px;
+
+      .cartFooterName {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #000000;
+      }
+
+      .cartFooterDash {
+        box-sizing: border-box;
+        position: relative;
+        flex: 1;
+        border-bottom: 1px dashed #dfdfdf;
+        top: -3px;
+        margin: 0 10px;
+      }
+
+      .cartFooterPrice {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #000000;
+      }
+    }
+    .cartFooterBtn {
+      position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      border-radius: 20px;
+      border: none;
+      background-color: #9dd458;
+      color: #ffffff;
+
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+      }
+
+      img {
+        position: absolute;
+        right: 30px;
+      }
+    }
+  }
 }
