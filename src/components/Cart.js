@@ -27,9 +27,9 @@ function Cart () {
                                 <p className="cartItemName">Мужские Кроссовки Nike Air Max 270</p>
                                 <p className="cartItemPrice">12 999 руб.</p>
                             </div>
-                            <div className="cartItemButton">
+                            <button className="cartRemove">
                                 <img src="../img/remove.svg" alt="Добавить" />
-                            </div>
+                            </button>
                         </div>
                     </div>
                     <div className="cartFooter">
