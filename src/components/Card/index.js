@@ -1,9 +1,15 @@
+import React from 'react'
 import styles from "./Card.module.scss"
 
 function Card (props) {
+    const [added, setAdded] = React.useState(false);
+    const onClickPlus = () => {
+        setAdded (added ? false : true)
+    }
+
     return (
         <div className={styles.card}>
-            <button className = {styles.cardFavorite}>
+            <button className = {styles.cardFavorite} onClick = {props.onFavorite}>
                 <img src="img/favorite-sneakers.svg" alt="Избранное" />
             </button>
             <img className = {styles.cardImg} src= {props.imageUrl} alt="Кросовки" />
@@ -13,8 +19,9 @@ function Card (props) {
                     <span className = {styles.text}>Цена:</span>
                     <span className = {styles.price}>{props.price} руб.</span>
                 </div>
-                <button className = {styles.cardAdd}>
-                    <img src="img/add.svg" alt="Добавить" />
+                <button className = {styles.cardAdd} onClick = {onClickPlus}>
+                    {added ? <img src="img/added.svg" alt="Добавить" /> : <img src="img/add.svg" alt="Добавить" />}
+                    {/* <img src="img/add.svg" alt="Добавить" /> */}
                 </button>
             </div>
         </div>

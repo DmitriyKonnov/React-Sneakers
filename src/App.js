@@ -71,6 +71,8 @@ function App() {
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
+                onFavorite = {() => console.log('Нажми избранное')}
+                onPlus = {() => console.log('Нажми плюс')}
               />
             ))
             }
