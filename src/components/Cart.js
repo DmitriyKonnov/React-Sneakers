@@ -1,10 +1,13 @@
-function Cart () {
+function Cart (props) {
     return (
         <div className="cart">
             <div className="cartBg">
                 <div className="cartBlock">
                     <div className="cartHeader">
                         <h3>Корзина</h3>
+                        <button onClick = {props.onClose} className="cartRemove">
+                            <img src="../img/remove.svg" alt="Добавить" />
+                        </button>
                     </div>
                     <div className="cartContent">
                         <div className="cartItem">
