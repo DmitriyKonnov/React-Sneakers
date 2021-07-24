@@ -21,6 +21,10 @@ ul {
   list-style: none;
 }
 
+.noScroll {
+  overflow: hidden;
+}
+
 .wrapper {
   margin: 0 auto;
   margin-top: 40px;
@@ -148,7 +152,7 @@ ul {
 }
 
 .cartBg {
-  position: absolute;
+  position: fixed;
 
   top: 0;
   left: 0;

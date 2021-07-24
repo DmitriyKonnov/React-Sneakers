@@ -6,61 +6,29 @@ import Cart from './components/Cart'
 
 
 function App() {
-  const [items, setItems] = React.useState([  {"title": "Мужские Кроссовки Nike Blazer Mid Suede",
-  "price": 12999,
-  "imageUrl": "/img/sneakers-1.jpg"
- },
- {"title": "Max 270и Nike Blazer Mid Suede",
-  "price": 12999,
-  "imageUrl": "/img/sneakers-2.jpg"
- },
- {"title": "Мужские Кроссовки Nike Blazer Mid Suede",
-  "price": 8499,
-  "imageUrl": "/img/sneakers-3.jpg"
- },
- {"title": "Кроссовки Puma X Aka Boku Future Rider",
-  "price": 8999,
-  "imageUrl": "/img/sneakers-4.jpg"
- },
- {"title": "Мужские Кроссовки Under Armour Curry 8",
-  "price": 10999,
-  "imageUrl": "/img/sneakers-5.jpg"
- },
- {"title": "Мужские Кроссовки Nike Kyrie 7",
-  "price": 12999,
-  "imageUrl": "/img/sneakers-6.jpg"
- },
- {"title": "Мужские Кроссовки Jordan Air Jordan 11",
-  "price": 14999,
-  "imageUrl": "/img/sneakers-7.jpg"
- },
- {"title": "Мужские Кроссовки Nike LeBron XVIII",
-  "price": 12999,
-  "imageUrl": "/img/sneakers-8.jpg"
- },
- {"title": "Мужские Кроссовки Nike Lebron XVIII Low",
-  "price": 11999,
-  "imageUrl": "/img/sneakers-9.jpg"
- },
- {"title": "Кроссовки Puma X Aka Boku Future Rider",
-  "price": 6999,
-  "imageUrl": "/img/sneakers-10.jpg"
- },
- {"title": "Мужские Кроссовки Nike Kyrie Flytrap IV",
-  "price": 17999,
-  "imageUrl": "/img/sneakers-11.jpg"
- },
- {"title": "Мужские Кроссовки Nike Blazer Mid Suede",
-  "price": 10999,
-  "imageUrl": "/img/sneakers-12.jpg"
- },])
+  const [items, setItems] = React.useState([]);
   const [ cartOpened, setCartOpened] = React.useState ( false );
+  const body = document.body;
+
+  React.useEffect ( () => {
+    fetch('https://60f84823ee56ef0017975864.mockapi.io/items').then ( (res) => {
+      return res.json();
+    }).then( (json) => {
+      setItems(json);
+    });
+  }, [])
+
+ 
 
   return (
     <div className="wrapper">
       {/* {cartOpened ? <Cart onClose = { () => setCartOpened( false )}/> : null} */}
-      {cartOpened && <Cart onClose = { () => setCartOpened( false )}/>}
-      <Header onClickCart = { () => setCartOpened(true)}/>
+      {cartOpened && <Cart onClose = { () => {setCartOpened( false )
+        body.classList.remove( "noScroll" )
+      }}/>}
+      <Header onClickCart = { () => {setCartOpened(true)
+        body.classList.add( "noScroll" )
+      }}/>
       <div className="content">
         <div className="container">
           <ContentHeader />
