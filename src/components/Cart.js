@@ -1,4 +1,12 @@
+import React from 'react'
+
 function Cart ({onClose, items=[]}) {
+
+    const [remove, setRemove] = React.useState(true)
+    const removeCartItem = () => {
+        setRemove(false);
+    }
+
     return (
         <div className="cart">
             <div className="cartBg">
@@ -10,19 +18,19 @@ function Cart ({onClose, items=[]}) {
                         </button>
                     </div>
                     <div className="cartContent">
-                        {/* { items.map ( (item) => ())} */}
-                        <div className="cartItem">
-                            <div className="cartItemImg">
-                                <img src="../img/sneakers-1.jpg" alt="" />
-                            </div>
-                            <div className="cartItemContent">
-                                <p className="cartItemName">Мужские Кроссовки Nike Air Max 270</p>
-                                <p className="cartItemPrice">12 999 руб.</p>
-                            </div>
-                            <button className = "cartRemove">
-                                <img src="../img/remove.svg" alt="Добавить" />
-                            </button>
-                        </div>
+                        {remove && items.map ( (item) => (
+                            <div className="cartItem">
+                                <div className="cartItemImg">
+                                    <img src={item.imageUrl} alt="" />
+                                </div>
+                                <div className="cartItemContent">
+                                    <p className="cartItemName">{item.title}</p>
+                                    <p className="cartItemPrice">{item.price}</p>
+                                </div>
+                                <button onClick = {removeCartItem} className = "cartRemove">
+                                    <img src="../img/remove.svg" alt="Удалить" />
+                                </button>
+                            </div>))}
                     </div>
                     <div className="cartFooter">
                         <div className="cartSum">

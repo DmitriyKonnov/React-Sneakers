@@ -6,9 +6,12 @@ import Cart from './components/Cart'
 
 
 function App() {
-  const [items, setItems] = React.useState([]);
-  const [ cartOpened, setCartOpened] = React.useState ( false );
   const body = document.body;
+
+  const [items, setItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+  const [cartItems, setCartItems] = React.useState([])
+  
 
   React.useEffect ( () => {
     fetch('https://60f84823ee56ef0017975864.mockapi.io/items').then ( (res) => {
@@ -18,12 +21,17 @@ function App() {
     });
   }, [])
 
+  const addToCart = (obj) => {
+    // setCartItems([...cartItems, obj])
+    setCartItems(prev =>[...prev, obj]);
+  }
+
  
 
   return (
     <div className="wrapper">
       {/* {cartOpened ? <Cart onClose = { () => setCartOpened( false )}/> : null} */}
-      {cartOpened && <Cart onClose = { () => {setCartOpened( false )
+      {cartOpened && <Cart items = {cartItems} onClose = { () => {setCartOpened( false )
         body.classList.remove( "noScroll" )
       }}/>}
       <Header onClickCart = { () => {setCartOpened(true)
@@ -33,13 +41,13 @@ function App() {
         <div className="container">
           <ContentHeader />
           <div className="cardBlock">
-            {items.map ( (item) => (
-              <Card 
+            {items.map ( (item, index) => (
+              <Card key = {index}
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
-                onFavorite = {() => console.log('Нажми избранное')}
-                onPlus = {() => console.log('Нажми плюс')}
+                onFavorite = {() => console.log(item.index)}
+                onPlus = {addToCart}
               />
             ))
             }

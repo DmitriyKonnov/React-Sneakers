@@ -190,6 +190,7 @@ ul {
 
   .cartContent {
     flex: 1;
+    min-width: 350px;
     .cartItem {
       display: flex;
       align-items: center;
