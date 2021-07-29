@@ -9,6 +9,7 @@ function Card ({onFavorite, imageUrl, title, price, onPlus}) {
         onPlus({onFavorite, imageUrl, title})
     }
 
+
     return (
         <div className={styles.card}>
             <button className = {styles.cardFavorite} onClick = {onFavorite}>

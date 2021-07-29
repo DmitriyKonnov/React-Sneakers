@@ -18,8 +18,8 @@ function Cart ({onClose, items=[]}) {
                         </button>
                     </div>
                     <div className="cartContent">
-                        {remove && items.map ( (item) => (
-                            <div className="cartItem">
+                        {items.map ( (item) => (
+                            remove && <div className="cartItem">
                                 <div className="cartItemImg">
                                     <img src={item.imageUrl} alt="" />
                                 </div>

@@ -24,6 +24,7 @@ function App() {
   const addToCart = (obj) => {
     // setCartItems([...cartItems, obj])
     setCartItems(prev =>[...prev, obj]);
+    console.log(obj)
   }
 
  
@@ -41,12 +42,13 @@ function App() {
         <div className="container">
           <ContentHeader />
           <div className="cardBlock">
-            {items.map ( (item, index) => (
-              <Card key = {index}
+            {items.map ( (item) => (
+              <Card 
+                key = {item.id}
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
-                onFavorite = {() => console.log(item.index)}
+                onFavorite = {() => console.log(item.id)}
                 onPlus = {addToCart}
               />
             ))
