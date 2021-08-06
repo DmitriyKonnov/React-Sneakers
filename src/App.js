@@ -1,8 +1,8 @@
-import React from 'react'
-import Header from './components/Header'
-import ContentHeader from './components/ContentHeader'
-import Card from './components/Card'
-import Cart from './components/Cart'
+import React from 'react';
+import axios from 'axios';
+import Header from './components/Header';
+import Card from './components/Card';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -10,15 +10,18 @@ function App() {
 
   const [items, setItems] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
-  const [cartItems, setCartItems] = React.useState([])
-  const [searchValue, setSearchValue] = React.useState('')
+  const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect ( () => {
-    fetch('https://60f84823ee56ef0017975864.mockapi.io/items').then ( (res) => {
-      return res.json();
-    }).then( (json) => {
-      setItems(json);
-    });
+    // fetch('https://60f84823ee56ef0017975864.mockapi.io/items').then ( (res) => {
+    //   return res.json();
+    // }).then( (json) => {
+    //   setItems(json);
+    // }); Вместо fetch использую axios
+    axios('https://60f84823ee56ef0017975864.mockapi.io/items').then ((res) => {
+      setItems(res.data)
+    })
   }, [])
 
   const addToCart = (obj) => {
