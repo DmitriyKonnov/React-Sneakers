@@ -19,15 +19,15 @@ function App() {
     // }).then( (json) => {
     //   setItems(json);
     // }); Вместо fetch использую axios
-    axios('https://60f84823ee56ef0017975864.mockapi.io/items').then ((res) => {
+    axios.get('https://60f84823ee56ef0017975864.mockapi.io/items').then ((res) => {
       setItems(res.data)
     })
   }, [])
 
   const addToCart = (obj) => {
+    axios.post('https://60f84823ee56ef0017975864.mockapi.io/cart',obj);
     // setCartItems([...cartItems, obj])
     setCartItems(prev =>[...prev, obj]);
-    console.log(obj)
   }
 
   const onCahangeSearchInput = (event) =>{
@@ -66,7 +66,6 @@ function App() {
           </div>
           <div className="cardBlock">
             {items
-              .filter ( (item) => item.title.toLowerCase().includes(searchValue))
               .map ( (item) => (
               <Card 
                 key = {item.id}
