@@ -21,29 +21,37 @@ function App() {
     // }); Вместо fetch использую axios
     axios.get('https://60f84823ee56ef0017975864.mockapi.io/items').then ((res) => {
       setItems(res.data)
-    })
+    });
+    axios.get('https://60f84823ee56ef0017975864.mockapi.io/cart').then ((res) => {
+      setCartItems(res.data)
+    });
   }, [])
 
   const addToCart = (obj) => {
     axios.post('https://60f84823ee56ef0017975864.mockapi.io/cart',obj);
-    // setCartItems([...cartItems, obj])
+    // setCartItems([...cartItems, obj]);
     setCartItems(prev =>[...prev, obj]);
-  }
+  };
 
   const onCahangeSearchInput = (event) =>{
     setSearchValue(event.target.value);
-  }
+  };
 
   const inputClear = () => {
     setSearchValue('');
-  }
+  };
+
+  const onRemoveItem = (id) => {
+    axios.delete(`https://60f84823ee56ef0017975864.mockapi.io/cart/${id}`);
+    setCartItems(prev => prev.filter(item => item.id !== id))
+  };
 
  
 
   return (
     <div className="wrapper">
       {/* {cartOpened ? <Cart onClose = { () => setCartOpened( false )}/> : null} */}
-      {cartOpened && <Cart items = {cartItems} onClose = { () => {setCartOpened( false )
+      {cartOpened && <Cart items = {cartItems} onRemove = {onRemoveItem} onClose = { () => {setCartOpened( false )
         body.classList.remove( "noScroll" )
       }}/>}
       <Header onClickCart = { () => {setCartOpened(true)

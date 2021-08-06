@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Cart ({onClose, items=[]}) {
+function Cart ({onClose, onRemove, items=[]}) {
 
     
   
@@ -25,7 +25,7 @@ function Cart ({onClose, items=[]}) {
                                     <p className="cartItemName">{item.title}</p>
                                     <p className="cartItemPrice">{item.price}</p>
                                 </div>
-                                <button className = "cartRemove">
+                                <button onClick = {() => onRemove(item.id)} className = "cartRemove">
                                     <img src="../img/remove.svg" alt="Удалить" />
                                 </button>
                             </div>))}

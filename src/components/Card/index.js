@@ -6,7 +6,7 @@ function Card ({key, onFavorite, imageUrl, title, price, onPlus}) {
     const onClickPlus = () => {
         // setAdded (added ? false : true)
         setAdded (!added);
-        onPlus({key, onFavorite, imageUrl, title})
+        onPlus({key, imageUrl, title, price})
     }
 
 
