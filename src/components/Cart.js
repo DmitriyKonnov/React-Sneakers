@@ -2,10 +2,8 @@ import React from 'react'
 
 function Cart ({onClose, items=[]}) {
 
-    const [remove, setRemove] = React.useState(true)
-    const removeCartItem = () => {
-        setRemove(false);
-    }
+    
+  
 
     return (
         <div className="cart">
@@ -19,7 +17,7 @@ function Cart ({onClose, items=[]}) {
                     </div>
                     <div className="cartContent">
                         {items.map ( (item) => (
-                            remove && <div className="cartItem">
+                            <div className="cartItem">
                                 <div className="cartItemImg">
                                     <img src={item.imageUrl} alt="" />
                                 </div>
@@ -27,7 +25,7 @@ function Cart ({onClose, items=[]}) {
                                     <p className="cartItemName">{item.title}</p>
                                     <p className="cartItemPrice">{item.price}</p>
                                 </div>
-                                <button onClick = {removeCartItem} className = "cartRemove">
+                                <button className = "cartRemove">
                                     <img src="../img/remove.svg" alt="Удалить" />
                                 </button>
                             </div>))}

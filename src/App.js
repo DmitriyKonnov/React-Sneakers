@@ -11,7 +11,7 @@ function App() {
   const [items, setItems] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([])
-  
+  const [searchValue, setSearchValue] = React.useState('')
 
   React.useEffect ( () => {
     fetch('https://60f84823ee56ef0017975864.mockapi.io/items').then ( (res) => {
@@ -27,6 +27,14 @@ function App() {
     console.log(obj)
   }
 
+  const onCahangeSearchInput = (event) =>{
+    setSearchValue(event.target.value);
+  }
+
+  const inputClear = () => {
+    setSearchValue('');
+  }
+
  
 
   return (
@@ -40,9 +48,23 @@ function App() {
       }}/>
       <div className="content">
         <div className="container">
-          <ContentHeader />
+          <div className="contentHeader">
+            {
+              searchValue.length > 0 ? <h3 className="contentTitle">Вы ищите:{searchValue}</h3> : <h3 className="contentTitle"> Все кросовки
+              </h3>
+            }
+            <div className="searchBlock">
+              <img src="img/search.png" alt="Поиск" />
+              <button onClick = {inputClear} className="inputClear">
+                <img src="../img/remove.svg" alt="Добавить" />
+              </button>
+              <input onChange = {onCahangeSearchInput} value = {searchValue} type="text" placeholder = "Поиск..."/>
+            </div>
+          </div>
           <div className="cardBlock">
-            {items.map ( (item) => (
+            {items
+              .filter ( (item) => item.title.toLowerCase().includes(searchValue))
+              .map ( (item) => (
               <Card 
                 key = {item.id}
                 title = {item.title}
