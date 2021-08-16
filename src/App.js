@@ -31,6 +31,7 @@ function App() {
     axios.post('https://60f84823ee56ef0017975864.mockapi.io/cart',obj);
     // setCartItems([...cartItems, obj]);
     setCartItems(prev =>[...prev, obj]);
+    console.log(obj)
   };
 
   const onCahangeSearchInput = (event) =>{
@@ -42,6 +43,7 @@ function App() {
   };
 
   const onRemoveItem = (id) => {
+    console.log(id)
     axios.delete(`https://60f84823ee56ef0017975864.mockapi.io/cart/${id}`);
     setCartItems(prev => prev.filter(item => item.id !== id))
   };
@@ -74,13 +76,15 @@ function App() {
           </div>
           <div className="cardBlock">
             {items
-              .map ( (item) => (
+              .filter( item =>item.title.includes(searchValue.toLowerCase()))
+              .map ( (item,index) => (
               <Card 
-                key = {item.id}
+                key = {index}
+                id = {index}
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
-                onFavorite = {() => console.log(item.id)}
+                onFavorite = {() => console.log(item)}
                 onPlus = {addToCart}
               />
             ))
