@@ -77,14 +77,14 @@ function App() {
           <div className="cardBlock">
             {items
               .filter( item =>item.title.includes(searchValue.toLowerCase()))
-              .map ( (item,index) => (
+              .map ( (item) => (
               <Card 
-                key = {index}
-                id = {index}
+                key = {item.idname}
+                id = {item.id}
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
-                onFavorite = {() => console.log(item)}
+                onFavorite = {() => console.log(item.id)}
                 onPlus = {addToCart}
               />
             ))
