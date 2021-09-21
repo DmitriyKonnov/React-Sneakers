@@ -82,7 +82,7 @@ function App() {
           </div>
           <div className="cardBlock">
             {items
-              .filter( item =>item.title.includes(searchValue.toLowerCase()))
+              .filter( elem =>elem.title.toLowerCase().includes(searchValue.toLowerCase()))
               .map ( (item) => (
               <Card 
                 key = {item.idname}
