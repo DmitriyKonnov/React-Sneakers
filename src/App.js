@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from "react-router-dom";
 import axios from 'axios';
 import Header from './components/Header';
 import Card from './components/Card';
@@ -65,6 +66,7 @@ function App() {
       <Header onClickCart = { () => {setCartOpened(true);
         body.classList.add( "noScroll" );
       }}/>
+
       <div className="content">
         <div className="container">
           <div className="contentHeader">
@@ -83,9 +85,9 @@ function App() {
           <div className="cardBlock">
             {items
               .filter( elem =>elem.title.toLowerCase().includes(searchValue.toLowerCase()))
-              .map ( (item) => (
+              .map ( (item, index) => (
               <Card 
-                key = {item.idname}
+                key = {index}
                 id = {item.id}
                 title = {item.title}
                 price = {item.price}

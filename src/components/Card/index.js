@@ -14,7 +14,6 @@ function Card ({id, onFavorite, imageUrl, title, price, onPlus}) {
         // setAdded (added ? false : true)
         setAdded (!added);
         onPlus({id, imageUrl, title, price})
-        console.log(id)
     }
 
 
