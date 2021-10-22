@@ -35,16 +35,20 @@ function App() {
     });
   }, [])
 
-  const addToCart = (obj) => {
-    axios.post('https://60f84823ee56ef0017975864.mockapi.io/cart',obj);
+  const addToCart = async(obj) => {
+     const { data } = await axios.post('https://60f84823ee56ef0017975864.mockapi.io/cart',obj);
     // setCartItems([...cartItems, obj]);
-    setCartItems(prev =>[...prev, obj]);
-    console.log(obj)
+    setCartItems(prev =>[...prev, data]);
   };
 
-  const addToFavorite = (obj) => {
-    axios.post('https://60f84823ee56ef0017975864.mockapi.io/favorites', obj);
-    setFavorites([...favorites,obj]);
+  const addToFavorite = async(obj) => {
+    if (favorites.find((favObj) => favObj.id === obj.id)) {
+      axios.delete(`https://60f84823ee56ef0017975864.mockapi.io/favorites/${obj.id}`)
+    }
+    else {
+      const { data } = await axios.post('https://60f84823ee56ef0017975864.mockapi.io/favorites', obj);
+    setFavorites([...favorites,data]);
+    }
   }
 
   const onCahangeSearchInput = (event) =>{
@@ -87,6 +91,7 @@ function App() {
       <Route path ="/favorites">
       < Favorites 
         items = {favorites}
+        addToFavorite = {addToFavorite}
       />
       </Route>
       

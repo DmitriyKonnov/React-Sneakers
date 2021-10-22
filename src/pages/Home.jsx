@@ -24,6 +24,7 @@ function Home ({searchValue,inputClear,onCahangeSearchInput,items,addToFavorite,
               .map ( (item, index) => (
               <Card 
                 key = {index}
+                id = {item.id}
                 title = {item.title}
                 price = {item.price}
                 imageUrl = {item.imageUrl}
