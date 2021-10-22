@@ -2,8 +2,11 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import axios from 'axios';
 import Header from './components/Header';
-import Card from './components/Card';
 import Cart from './components/Cart';
+
+import Home from './pages/Home'
+import Favorites from './pages/Favorites'
+
 
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
     });
     axios.get('https://60f84823ee56ef0017975864.mockapi.io/cart').then ((res) => {
       setCartItems(res.data)
+    });
+    axios.get('https://60f84823ee56ef0017975864.mockapi.io/favorites').then ((res) => {
+      setFavorites(res.data)
     });
   }, [])
 
@@ -67,39 +73,23 @@ function App() {
         body.classList.add( "noScroll" );
       }}/>
 
-      <div className="content">
-        <div className="container">
-          <div className="contentHeader">
-            {
-              searchValue.length > 0 ? <h3 className="contentTitle">Вы ищите:{searchValue}</h3> : <h3 className="contentTitle"> Все кросовки
-              </h3>
-            }
-            <div className="searchBlock">
-              <img src="img/search.png" alt="Поиск" />
-              <button onClick = {inputClear} className="inputClear">
-                <img src="../img/remove.svg" alt="Добавить" />
-              </button>
-              <input onChange = {onCahangeSearchInput} value = {searchValue} type="text" placeholder = "Поиск..."/>
-            </div>
-          </div>
-          <div className="cardBlock">
-            {items
-              .filter( elem =>elem.title.toLowerCase().includes(searchValue.toLowerCase()))
-              .map ( (item, index) => (
-              <Card 
-                key = {index}
-                id = {item.id}
-                title = {item.title}
-                price = {item.price}
-                imageUrl = {item.imageUrl}
-                onFavorite = {addToFavorite}
-                onPlus = {addToCart}
-              />
-            ))
-            }
-          </div>
-        </div>
-      </div>
+      <Route path = "/" exact>
+        <Home 
+        searchValue = {searchValue} 
+        inputClear= {inputClear} 
+        onCahangeSearchInput = {onCahangeSearchInput}
+        items = {items}
+        addToFavorite = {addToFavorite}
+        addToCart = {addToCart}
+        />
+      </Route>
+
+      <Route path ="/favorites">
+      < Favorites 
+        items = {favorites}
+      />
+      </Route>
+      
     </div>
   );
 }
